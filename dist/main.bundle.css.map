@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./scss/index.scss"],"names":[],"mappings":"AAEA;EACI,gCAHG;AAEP,C","file":"main.bundle.css","sourcesContent":["$blue: cornflowerblue;\r\n\r\nbody {\r\n    background-color: $blue;\r\n}"],"sourceRoot":""}
