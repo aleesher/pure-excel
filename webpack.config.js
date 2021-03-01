@@ -27,11 +27,28 @@ module.exports = (env, argv) => {
         new CleanWebpackPlugin(),
       ];
 
-      if(isDev) {
+      if (isDev) {
         base.push(new ESLintPlugin());
       }
 
       return base;
+    }
+
+    const jsLoaders = () => {
+      const loaders = [
+        {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      ]
+    
+      if (isDev) {
+        loaders.push('eslint-loader')
+      }
+    
+      return loaders
     }
     
     return {
@@ -71,12 +88,7 @@ module.exports = (env, argv) => {
             {
               test: /\.m?js$/,
               exclude: /node_modules/,
-              use: {
-                loader: "babel-loader",
-                options: {
-                  presets: ['@babel/preset-env']
-                }
-              }
+              use: jsLoaders()
             }
           ],
       },

@@ -19,6 +19,11 @@ module.exports = {
     'comma-dangle': 0,
     'no-trailing-spaces': 0,
     'indent': 0,
-    'max-len': 1000
+    'max-len': 0,
+    'quotes': 0,
+    'require-jsdoc': 0,
+    'eol-last': 0,
+    'arrow-parens': 0,
+    'operator-linebreak': 'off'
   },
 };
