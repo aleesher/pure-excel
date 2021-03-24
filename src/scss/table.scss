@@ -47,6 +47,7 @@
   }
 
   .cell {
+    position: relative;
     min-width: 40px;
     padding: 5px;
     width: $cell-width;
@@ -73,9 +74,10 @@
     bottom: 0;
     opacity: 0;
     background: $primary-color;
+    z-index: 1000;
 
     &:hover {
-      opacity: 1;
+      opacity: 1 !important;
       cursor: col-resize;
     }
   }
