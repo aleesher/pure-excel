@@ -94,6 +94,7 @@ export class Table extends ExcelComponent {
             const $target = this.$root.find(`[data-id="${cell.row}:${cell.col}"]`);
 
             this.selection.select($target);
+            this.$emit('table:select', $target);
         } 
     }
 

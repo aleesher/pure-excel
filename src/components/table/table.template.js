@@ -59,7 +59,7 @@ export function createTable(rowsCount = 15) {
             .map(toCell(row))
             .join('');
         rows.push(createRow(row + 1, cells));
-    }    
+    }
 
     return rows.join('');
 }

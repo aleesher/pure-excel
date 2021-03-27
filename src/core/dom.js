@@ -121,4 +121,4 @@ $.create = (tagName, classes = "") => {
     }
 
     return $(el);
-} 
+}
