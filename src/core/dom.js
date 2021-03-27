@@ -14,6 +14,20 @@ class Dom {
         return this.$el.outerHTML.trim();
     }
 
+    trim() {
+        this.$el.textContent.trim();
+        return this;
+    }
+
+    text(text) {
+        if (typeof text === 'string') {
+            this.$el.textContent = text;
+            return this;
+        }
+
+        return this.$el.textContent;
+    }
+
     clear() {
         this.html('');
         return this;
@@ -58,12 +72,40 @@ class Dom {
         return this.$el.querySelectorAll(selector);
     }
 
+    find(selector) {
+        return $(this.$el.querySelector(selector));
+    }
+
     css(styles = {}) {
         Object
             .keys(styles)
             .forEach(key => {
                 this.$el.style[key] = styles[key];
             });
+    }
+
+    addClass(className) {
+        this.$el.classList.add(className);
+    }
+
+    removeClass(className) {
+        this.$el.classList.remove(className);
+    }
+
+    id(parse) {
+        if (parse) {
+            const [row, col] = this.id().split(':');
+            return {
+                row: +row,
+                col: +col
+            }
+        }
+        return this.data.id;
+    }
+
+    focus() {
+        this.$el.focus();
+        return this;
     }
 }
 
