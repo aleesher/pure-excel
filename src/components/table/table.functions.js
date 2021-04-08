@@ -51,3 +51,11 @@ export function getCellToMove(keyCode, { col, row }) {
 
   return { col, row };
 }
+
+export function getCellStyle(state, index, isRow = false) {
+  const styleProp = isRow ? 'height' : 'width';
+
+  return state && state[index] ?
+    `style="${styleProp}: ${state[index]}px"` :
+    '';
+}
