@@ -2,6 +2,7 @@ import { ExcelComponent } from "@core/ExcelComponent";
 import { $ } from "@core/dom";
 
 import { EVENT_KEYS } from "../table/Table";
+
 export class Formula extends ExcelComponent {
     static className = 'excel__formula';
 
@@ -9,6 +10,7 @@ export class Formula extends ExcelComponent {
         super($root, {
             name: 'Formula',
             listeners: ['input', 'keydown'],
+            subscribers: ['currentText'],
             ...options
         });
     }
@@ -23,13 +25,10 @@ export class Formula extends ExcelComponent {
     init() {
         super.init();
 
-        const $formula = this.$root.find('#formula-input');
+        this.$formula = this.$root.find('#formula-input');
 
         this.$on('table:select',
-            $cell => $formula.text($cell.text()));
-
-        this.$on('table:input', 
-            $cell => $formula.text($cell.text()));
+            $cell => this.$formula.text($cell.text()));
     }
 
     onInput(event) {
@@ -45,5 +44,9 @@ export class Formula extends ExcelComponent {
 
             this.$emit('formula:enter', '');
         }
+    }
+
+    storeChanged({ currentText }) {
+        this.$formula.text(currentText)
     }
 }
